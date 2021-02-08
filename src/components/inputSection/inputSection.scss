@@ -1,0 +1,17 @@
+.input-section {
+
+    &__label {
+        display: flex;
+        flex-direction: column;
+
+    }
+
+    &__span {
+
+    }
+}
+
+.input-currency {
+    display: flex;
+    flex-direction: row;
+}

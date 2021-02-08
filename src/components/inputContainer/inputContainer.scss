@@ -1,0 +1,19 @@
+.input-container {
+    background-color: cadetblue;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(8px + 2vmin);
+    color: white;
+
+    &__column {
+        margin: 50px;
+        border: 1px solid white;
+
+        &--buttons {
+            border: 1px solid red;
+        }
+    }
+}
