@@ -2,15 +2,15 @@
     background-color: cadetblue;
     display: flex;
     flex-direction: row;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: center;
     font-size: calc(8px + 2vmin);
     color: white;
 
     &__column {
-        margin: 50px;
-        border: 1px solid white;
+        margin: 40px;
+        border: 2px solid white;
 
         &--buttons {
             border: 1px solid red;

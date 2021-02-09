@@ -46,51 +46,34 @@ export default class InputContainer extends Component {
         })
     }
 
+    createSectionsList = (quantity) => {
+        const {currencyList} = this.state;
+        let sectionsArray = [];
+        for (let i = 1; i <= quantity; i++) {
+            sectionsArray.push(
+                <div className="input-container__column">
+                    <InputSection
+                        currencyList={currencyList}
+                        onChangeCurrency={this.onChangeCurrency}
+                        onChangeAmount={this.onChangeAmount}
+                        currency={this.state.currency}
+                        amount={this.state.amount}
+                        id={i}
+                        mainId={this.state.mainId}
+                    />
+                </div>
+            )
+
+        }
+        return sectionsArray;
+    }
 
     render () {
-        const {currencyList} = this.state;
+        const sectionList = this.createSectionsList(10);
 
         return (
             <div className='input-container'>
-                <div className="input-container__column">
-                    <InputSection
-                        currencyList={currencyList}
-                        onChangeCurrency={this.onChangeCurrency}
-                        onChangeAmount={this.onChangeAmount}
-                        currency={this.state.currency}
-                        amount={this.state.amount}
-                        id={1}
-                        mainId={this.state.mainId}
-                    />
-                </div>
-{/*                <div className="input-container__reverse">
-                    <button type='button'>Reverse</button>
-                </div>*/}
-                <div className="input-container__column">
-                    <InputSection
-                        currencyList={currencyList}
-                        onChangeCurrency={this.onChangeCurrency}
-                        onChangeAmount={this.onChangeAmount}
-                        currency={this.state.currency}
-                        amount={this.state.amount}
-                        id={2}
-                        mainId={this.state.mainId}
-                    />
-                </div>
-                <div className="input-container__column">
-                    <InputSection
-                        currencyList={currencyList}
-                        onChangeCurrency={this.onChangeCurrency}
-                        onChangeAmount={this.onChangeAmount}
-                        currency={this.state.currency}
-                        amount={this.state.amount}
-                        id={3}
-                        mainId={this.state.mainId}
-                    />
-                </div>
-           {/*     <div className="input-container__column input-container__column--buttons">
-                    <button type='button'>Calculate</button>
-                </div>*/}
+                {sectionList}
             </div>
         )
     }
