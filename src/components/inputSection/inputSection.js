@@ -43,8 +43,21 @@ export default class InputSection extends Component {
 
 
     inputChange = (e) => {
+        this.props.processChangingAmount(this.props.id);
+
+        this.setState((prev) => {
+            return {
+                ...prev,
+                amount: e.target.value
+            }
+        })
+    }
+
+
+    inputBlur = (e) => {
         this.setState((prev) => {
             this.props.onChangeAmount(e.target.value, this.props.id, this.state.currency);
+            this.props.sortSections(this.props.id);
 
             return {
                 ...prev,
@@ -109,6 +122,7 @@ export default class InputSection extends Component {
                             type="text"
                             name="amount"
                             className="input-currency__amount"
+                            onBlur={this.inputBlur}
                             onChange={this.inputChange}
                             value={this.state.amount}
                         />
@@ -126,5 +140,7 @@ InputSection.propTypes = { // проверка onChangeCurrencyValue, перед
     id: PropTypes.number,
     currencyList: PropTypes.array,
     mainId: PropTypes.number,
-    amount: PropTypes.string
+    amount: PropTypes.string,
+    sortSections: PropTypes.func,
+    processChangingAmount: PropTypes.func
 }

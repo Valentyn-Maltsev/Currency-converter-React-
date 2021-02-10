@@ -14,10 +14,16 @@ export default class ExchangeService {
     }
 
     _transformCurrency = (currencies) => {
-        let keys = [];
+        let result = [];
         for (let key in currencies) {
-            keys.push({name: key, currency: currencies[key]});
+            result.push({name: key, currency: currencies[key]});
         }
-        return keys;
+
+        result.sort(function(a, b) {
+            if (a.name.toLowerCase() < b.name.toLowerCase()) {
+                return -1
+            }
+        })
+        return result;
     }
 }
